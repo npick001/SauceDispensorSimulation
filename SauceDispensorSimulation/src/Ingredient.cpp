@@ -20,6 +20,18 @@ double Ingredient::GetLevel() const
 	return quantity;
 }
 
+bool Ingredient::ReduceLevel(double amount)
+{
+	quantity -= amount;
+
+	if (quantity < 0.0) {
+		quantity = 0.0;
+		return false;
+	}
+
+	return true;
+}
+
 bool Ingredient::operator==(const Ingredient& other) const
 {
 	return this->name == other.name;

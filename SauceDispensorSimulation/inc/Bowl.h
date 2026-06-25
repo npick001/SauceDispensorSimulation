@@ -4,27 +4,33 @@
 #include "LoggerLib.h"
 #include "Ingredient.h"
 #include "Distribution.h"
+#include "SimulationExecutive.h"
 
 class Bowl
 {
 public:
-	Bowl(std::vector<Ingredient> required_ingredients, std::vector<int> amounts);
+	Bowl(std::vector<Ingredient> required_ingredients, std::vector<double> amounts);
 	~Bowl();
 
 	void SetArrivalTime(double time);
 	bool FulfillIngredient(Ingredient ingredient);
 	bool IsComplete();
-	int GetWeight();
+	double GetWeight();
 	int GetId();
 
+	// helpers for making the log look nice
+	void WriteExpectationHeader();
+	void LogExpectedResult();
+	void WriteExpectationFooter();
+
 	static void GetStatistics(double& avg_wait_time, double& total_wait_time, int& total_bowls_processed);
-	static void SetWeightDistribution(float min, float avg, float max);
+	static void SetWeightDistribution(double min, double avg, double max);
 private:
 	std::vector<Ingredient> required_ingredients;
 	std::vector<Ingredient> fulfilled_ingredients;
-	std::vector<int> req_ingredient_amounts;
+	std::vector<double> req_ingredient_amounts;
 	bool complete;
-	int weight;
+	double weight;
 	int id;
 
 	static Triangular* bowl_weight_distribution;
@@ -33,9 +39,9 @@ private:
 	static int bowl_id;
 	
 	// statistics
-	double arrival_time;
-	double wait_time;
-	static double total_wait_time;
+	Time arrival_time;
+	Time wait_time;
+	static Time total_wait_time;
 	static int total_bowls_processed;
 };
 

@@ -1,0 +1,32 @@
+
+HARDWARE ASSUMPTIONS:
+------------------------
+Conveyor and Carousel move at consistent speeds.
+Dispensing heads do not have a dispensing time (instant sauce dispensing).
+Dispensing head is 'aware' of what Ingredient it is dispensing and the amount of said Ingredient.
+Dispensing heads will dispense *exactly* the same amount of an Ingredient, every time.
+Simulated hardware failures are not supported.
+
+MODEL IMPLEMENTATION ASSUMPTIONS:
+------------------------
+Model is based on a Discrete-Event methodology.
+A Simulation Executive will execute Event Actions and drive simulation time.
+
+The Carousel will be locked with 2 dispensing heads.
+Carousel Ingredient cartridges will not move. The movement will be simulated using rotating Ingredient pointers, which the dispensors will be updated with.
+To allow for every bowl to be fulfilled, the taskrate of the Conveyor should be taskrate = (speed of carousel) / (number of ingredients)
+The Conveyor will manage the queue of orders.
+Ingredients will be dispensed with exactly the same amount.
+Each ingredient cartridge will have the exact same capacity of an Ingredient.
+Bowls will require [0, 2] distinct and nonstacking Ingredients (ex: a bowl will not ask for double Ranch)
+Dispensing heads will "try" to dispense every ingredient, but will not succeed. (My assumption is some vision model will say 'hey don't do that!')
+
+Ingredients are limited to: [Ranch, BBQ, Mayo, Hot Sauce, Mustard, Teriyaki, Caeser, Buffalo, Chipotle, Vinaigrette]
+
+Semi-reasonable variable values are:
+	- carousel_taskrate = 50 ms
+	- conveyor_taskrate = 500 ms
+	- dispensor_taskrate = 25 ms
+	- bowl_weight_disribution = Triangular distribution [1.0, 2.0, 3.0]
+	- (Ingredient) amount_to_dispense = 0.2
+	- (Ingredient) capacity = 10

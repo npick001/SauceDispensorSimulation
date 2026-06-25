@@ -1,13 +1,13 @@
 #include "Bowl.h"
 
 Triangular* Bowl::bowl_weight_distribution = nullptr;
-Logger* Bowl::logger = Logger::GetInstance("logs", "bowl_log.txt", 31);
-Logger* Bowl::results_logger = Logger::GetInstance("logs", "results_log.txt", 31);
+Logger* Bowl::logger = Logger::GetInstance("logs", "bowl_log.txt");
+Logger* Bowl::results_logger = Logger::GetInstance("logs", "results_log.txt");
 int Bowl::bowl_id = 0;
-double Bowl::total_wait_time = 0.0;
+Time Bowl::total_wait_time = 0.0;
 int Bowl::total_bowls_processed = 0;
 
-Bowl::Bowl(std::vector<Ingredient> requirements, std::vector<int> amounts)
+Bowl::Bowl(std::vector<Ingredient> requirements, std::vector<double> amounts)
 {
 	required_ingredients = requirements;
 	req_ingredient_amounts = amounts;
@@ -29,22 +29,22 @@ Bowl::Bowl(std::vector<Ingredient> requirements, std::vector<int> amounts)
 Bowl::~Bowl()
 {
 	// update statistics 
-	wait_time = std::chrono::duration<double>(std::chrono::system_clock::now().time_since_epoch()).count() - arrival_time;
+	wait_time = GetSimulationTime() - arrival_time;
 	total_bowls_processed++;
 	total_wait_time += wait_time;
 
 	if (required_ingredients.size() > 0) {
-		logger->Log(LogLevel::WARNING, "Bowl: Destroying bowl with unfulfilled ingredients.");
-		results_logger->Log(LogLevel::WARNING, "Bowl: Didn't fulfill " + std::to_string(required_ingredients.size()) + " ingredients.");
+		Bowl::logger->Log(LogLevel::WARNING, "Bowl " + std::to_string(id) + ": Destroying bowl with unfulfilled ingredients.");
+		results_logger->Log(LogLevel::WARNING, "Bowl " + std::to_string(id) + ": Didn't fulfill " + std::to_string(required_ingredients.size()) + " ingredients.");
 		for (auto& ingredient : required_ingredients) {
-			results_logger->Log(LogLevel::WARNING, "Bowl: Unfulfilled Ingredient: " + ingredient.GetName());
+			Bowl::results_logger->Log(LogLevel::WARNING, "Bowl " + std::to_string(id) + ": Unfulfilled Ingredient: " + ingredient.GetName());
 		}
 	}
 
 	// write to log the number and fulfilled ingredients
-	results_logger->Log(LogLevel::INFO, "Bowl: Fulfilled " + std::to_string(fulfilled_ingredients.size()) + "ingredients: ");
+	Bowl::results_logger->Log(LogLevel::INFO, "Bowl " + std::to_string(id) + ": Fulfilled " + std::to_string(fulfilled_ingredients.size()) + " ingredients: ");
 	for (auto& ingredient : fulfilled_ingredients) {
-		results_logger->Log(LogLevel::INFO, "Bowl: Ingredient: " + ingredient.GetName());
+		Bowl::results_logger->Log(LogLevel::INFO, "\t - Ingredient: " + ingredient.GetName());
 	}
 }
 
@@ -55,10 +55,10 @@ void Bowl::GetStatistics(double& avg_wait_time, double& total_wait_time, int& to
 	total_bowls_processed = Bowl::total_bowls_processed;
 }
 
-void Bowl::SetWeightDistribution(float min, float avg, float max)
+void Bowl::SetWeightDistribution(double min, double avg, double max)
 {
 	bowl_weight_distribution = new Triangular(min, avg, max);
-	logger->Log(LogLevel::INFO, "Bowl: Set weight distribution to min: " + std::to_string(min) + ", avg: " + std::to_string(avg) + ", max: " + std::to_string(max));
+	Bowl::logger->Log(LogLevel::INFO, "Bowl: Set weight distribution to min: " + std::to_string(min) + ", avg: " + std::to_string(avg) + ", max: " + std::to_string(max));
 }
 
 void Bowl::SetArrivalTime(double time)
@@ -68,20 +68,22 @@ void Bowl::SetArrivalTime(double time)
 
 bool Bowl::FulfillIngredient(Ingredient ingredient)
 {
-	for (auto it = required_ingredients.begin(); it != required_ingredients.end(); ++it) {
+	if (required_ingredients.size() > 0) {
+		for (auto it = required_ingredients.begin(); it != required_ingredients.end(); ++it) {
 
-		if (*it == ingredient) {
-			fulfilled_ingredients.push_back(ingredient); // keep track of fulfilled ingredients
+			if (*it == ingredient) {
+				fulfilled_ingredients.push_back(ingredient); // keep track of fulfilled ingredients
 
-			std::swap(*it, required_ingredients.back());
-			required_ingredients.pop_back();
+				std::swap(*it, required_ingredients.back());
+				required_ingredients.pop_back();
 
-			logger->Log(LogLevel::INFO, "Bowl: Fulfilled ingredient: " + ingredient.GetName());
-			return true;
+				Bowl::logger->Log(LogLevel::INFO, "Bowl " + std::to_string(id) + ": Fulfilled ingredient: " + ingredient.GetName());
+				return true;
+			}
 		}
 	}
 
-	logger->Log(LogLevel::WARNING, "Bowl: Attempted to fulfill ingredient not required: " + ingredient.GetName());
+	//Bowl::logger->Log(LogLevel::WARNING, "Bowl " + std::to_string(id) + ": Attempted to fulfill ingredient not required: " + ingredient.GetName());
 	return false;
 }
 
@@ -90,7 +92,7 @@ bool Bowl::IsComplete()
 	return complete;
 }
 
-int Bowl::GetWeight()
+double Bowl::GetWeight()
 {
 	return weight;
 }
@@ -98,4 +100,22 @@ int Bowl::GetWeight()
 int Bowl::GetId()
 {
 	return id;
+}
+
+void Bowl::WriteExpectationHeader()
+{
+	Bowl::results_logger->Log(LogLevel::INFO, "============= EXPECTATION ============");
+}
+
+void Bowl::LogExpectedResult()
+{
+	Bowl::results_logger->Log(LogLevel::INFO, "Bowl " + std::to_string(id) + ": expecting " + std::to_string(required_ingredients.size()) + " ingredients: ");
+	for (auto& ingredient : required_ingredients) {
+		Bowl::results_logger->Log(LogLevel::INFO, "\t - Ingredient: " + ingredient.GetName());
+	}
+}
+
+void Bowl::WriteExpectationFooter()
+{
+	Bowl::results_logger->Log(LogLevel::INFO, "======================================");
 }

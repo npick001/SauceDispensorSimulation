@@ -10,6 +10,7 @@ public:
 	int GetId() const;
 	std::string GetName() const;
 	double GetLevel() const;
+	bool ReduceLevel(double amount);
 
 	bool operator==(const Ingredient& other) const;
 	void operator=(const Ingredient& other);
