@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="SauceDispensorSimulation/SauceDispensorSimulation.vcxproj" />
+  <Project Path="SauceDispensorSimulation/SauceDispensorSimulation.vcxproj" Id="51626669-55bc-4d20-b5ce-6518d720437f" />
 </Solution>
