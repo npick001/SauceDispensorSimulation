@@ -48,7 +48,7 @@ Bowl::~Bowl()
 	}
 }
 
-void Bowl::GetStatistics(double& avg_wait_time, double& total_wait_time, int& total_bowls_processed)
+void Bowl::GetStatistics(Time& avg_wait_time, Time& total_wait_time, int& total_bowls_processed)
 {
 	avg_wait_time = Bowl::total_wait_time / Bowl::total_bowls_processed;
 	total_wait_time = Bowl::total_wait_time;

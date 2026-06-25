@@ -23,7 +23,7 @@ public:
 	void LogExpectedResult();
 	void WriteExpectationFooter();
 
-	static void GetStatistics(double& avg_wait_time, double& total_wait_time, int& total_bowls_processed);
+	static void GetStatistics(Time& avg_wait_time, Time& total_wait_time, int& total_bowls_processed);
 	static void SetWeightDistribution(double min, double avg, double max);
 private:
 	std::vector<Ingredient> required_ingredients;

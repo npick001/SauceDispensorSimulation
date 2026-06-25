@@ -1,0 +1,5 @@
+<map id="EventAction" name="EventAction">
+<area shape="rect" id="node2" href="$class_carousel_1_1_advance_e_a.html" title="{Carousel::AdvanceEA\n||+ AdvanceEA()\l+ Execute()\l}" alt="" coords="5,151,156,248"/>
+<area shape="rect" id="node3" href="$class_conveyor_1_1_advance_e_a.html" title="{Conveyor::AdvanceEA\n||+ AdvanceEA()\l+ Execute()\l}" alt="" coords="179,151,334,248"/>
+<area shape="rect" id="node4" href="$class_dispensing_head_1_1_dispense_e_a.html" title="{DispensingHead::DispenseEA\n||+ DispenseEA()\l+ Execute()\l}" alt="" coords="357,151,556,248"/>
+</map>

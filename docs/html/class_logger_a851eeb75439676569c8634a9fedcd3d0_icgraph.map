@@ -1,0 +1,14 @@
+<map id="Logger::Log" name="Logger::Log">
+<area shape="rect" id="node2" href="$class_bowl.html#a9d94b6fb4d11c81476a0a8a65b24e044" title="Bowl::~Bowl" alt="" coords="206,5,301,33"/>
+<area shape="rect" id="node3" href="$class_bowl.html#ad5d33d5b2940443a836ed041ac7043e2" title="Bowl::SetWeightDistribution" alt="" coords="161,57,346,85"/>
+<area shape="rect" id="node5" href="$class_bowl.html#a6f41f50805bf4280ed7272fac41e1fa1" title="Bowl::FulfillIngredient" alt="" coords="180,109,326,137"/>
+<area shape="rect" id="node6" href="$class_bowl.html#a67dff7b63558fe780fb7f722bbdd9ded" title="Bowl::WriteExpectationHeader" alt="" coords="154,161,353,189"/>
+<area shape="rect" id="node7" href="$class_bowl.html#af934a61796e0aeabd2c7a8ee038e9844" title="Bowl::LogExpectedResult" alt="" coords="167,213,340,241"/>
+<area shape="rect" id="node8" href="$class_bowl.html#a1ae5dc11a753d2b2f9acc46cf54d2179" title="Bowl::WriteExpectationFooter" alt="" coords="156,265,350,293"/>
+<area shape="rect" id="node9" href="$class_dispensing_head.html#a73ec761045067e681ffc7d49f8bf3bed" title="DispensingHead::DispensingHead" alt="" coords="143,317,364,345"/>
+<area shape="rect" id="node11" href="$class_dispensing_head.html#a77aa7eee560e1c7ca6a0eaf2e1c6be4b" title="DispensingHead::GetLocation" alt="" coords="156,369,351,397"/>
+<area shape="rect" id="node12" href="$class_carousel.html#a08d617367930c7c7fbe450eb45eda4a5" title="Carousel::ReduceSauceLevel" alt="" coords="156,421,350,449"/>
+<area shape="rect" id="node13" href="$class_conveyor.html#abfb1803aa0a53fb8331f5912ecad1f18" title="Conveyor::DispenseSauceOn" alt="" coords="156,473,350,501"/>
+<area shape="rect" id="node4" href="$class_bowl.html#a97b6ea36c11322f677d4649cf02ccd60" title="Bowl::Bowl" alt="" coords="435,57,522,85"/>
+<area shape="rect" id="node10" href="$class_carousel.html#ad53a1a768b87aa821497c26d167c97c1" title="Carousel::Carousel" alt="" coords="412,317,545,345"/>
+</map>

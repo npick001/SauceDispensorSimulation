@@ -1,0 +1,9 @@
+<map id="Distribution" name="Distribution">
+<area shape="rect" id="node2" href="$class_constant.html" title="{Constant\n||+ Constant()\l+ GetRV()\l}" alt="" coords="5,151,100,248"/>
+<area shape="rect" id="node3" href="$class_exponential.html" title="{Exponential\n||+ Exponential()\l+ GetRV()\l}" alt="" coords="123,151,232,248"/>
+<area shape="rect" id="node4" href="$class_normal.html" title="{Normal\n||+ Normal()\l+ GetRV()\l}" alt="" coords="256,151,340,248"/>
+<area shape="rect" id="node5" href="$class_poisson.html" title="{Poisson\n||+ Poisson()\l+ GetRV()\l}" alt="" coords="363,151,451,248"/>
+<area shape="rect" id="node6" href="$class_triangular.html" title="{Triangular\n||+ Triangular()\l+ GetRV()\l}" alt="" coords="476,151,573,248"/>
+<area shape="rect" id="node7" href="$class_uniform.html" title="{Uniform\n||+ Uniform()\l+ GetRV()\l}" alt="" coords="597,151,684,248"/>
+<area shape="rect" id="node8" href="$class_weibull.html" title="{Weibull\n||+ Weibull()\l+ GetRV()\l}" alt="" coords="708,151,792,248"/>
+</map>

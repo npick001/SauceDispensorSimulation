@@ -14,7 +14,7 @@ A Simulation Executive will execute Event Actions and drive simulation time.
 
 The Carousel will be locked with 2 dispensing heads.
 Carousel Ingredient cartridges will not move. The movement will be simulated using rotating Ingredient pointers, which the dispensors will be updated with.
-To allow for every bowl to be fulfilled, the taskrate of the Conveyor should be taskrate = (speed of carousel) / (number of ingredients)
+To allow for every bowl to be fulfilled, the taskrate of the Conveyor should be taskrate = (speed of carousel) * (number of ingredients)
 The Conveyor will manage the queue of orders.
 Ingredients will be dispensed with exactly the same amount.
 Each ingredient cartridge will have the exact same capacity of an Ingredient.

@@ -121,8 +121,9 @@ int DispensingHead::GetLocation()
 
 void DispensingHead::Dispense()
 {
-	conveyor->DispenseSauceOn(dispenseLocation, active_ing);
-	carousel->ReduceSauceLevel(id, amount);
+	if (conveyor->DispenseSauceOn(dispenseLocation, active_ing)) {
+		carousel->ReduceSauceLevel(id, amount);
+	}
 	DispensingHead::logger->Log(LogLevel::DEBUG, (location + " Dispensor dispensing " + active_ing->GetName()));
 
 	ScheduleEventIn(taskrate, new DispenseEA(this));
@@ -263,17 +264,21 @@ void Conveyor::Advance()
 	ScheduleEventIn(taskrate, new AdvanceEA(this));
 }
 
-void Conveyor::DispenseSauceOn(int index, Ingredient* ingredient)
+bool Conveyor::DispenseSauceOn(int index, Ingredient* ingredient)
 {
 	if (bowls[index] != nullptr) {
 		bool fulfilled = bowls[index]->FulfillIngredient(*ingredient);
 		if (fulfilled) {
 			Conveyor::logger->Log(LogLevel::INFO, "Bowl " + std::to_string(bowls[index]->GetId()) + " " + ingredient->GetName() + " fulfilled.");
+			return true;
 		}
 		else {
 			Conveyor::logger->Log(LogLevel::DEBUG, "Attempted to dispense " + ingredient->GetName() + " on Bowl " + std::to_string(bowls[index]->GetId()) + " that did not need it.");
+			return false;
 		}
 	}
+
+	return false;
 }
 
 double Conveyor::GetBowlWeight(int index)

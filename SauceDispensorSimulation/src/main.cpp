@@ -47,8 +47,21 @@ int main() {
 
 	InitializeSimulation();
 
-	std::vector<Bowl*> simulated_orders = GenerateSampleOrders(20, cartridge_ingredients);
+	std::vector<Bowl*> simulated_orders = GenerateSampleOrders(50, cartridge_ingredients);
 	SauceDispensorRobot* robot = new SauceDispensorRobot(simulated_orders, cartridge_ingredients, carousel_taskrate, conveyor_taskrate, dispensor_taskrate);
 
-	RunSimulation(100000);
+	RunSimulation(15000);
+
+	// print out the stats
+	std::vector<Ingredient> i;
+	std::vector<double> a;
+	Bowl* stat_collector = new Bowl(i, a);
+
+	Time avg_wait_time = 0.0;
+	Time total_wait_time = 0.0;
+	int bowls_processed = 0;
+	stat_collector->GetStatistics(avg_wait_time, total_wait_time, bowls_processed);
+	std::cout << "\n====== BOWL STATISTICS ======" << std::endl;
+	std::cout << "Number of bowls processed: " << bowls_processed << std::endl;
+	std::cout << "Average wait time (on conveyor): " << avg_wait_time  << "ms" << std::endl;
 }

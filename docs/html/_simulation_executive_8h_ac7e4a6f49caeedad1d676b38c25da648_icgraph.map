@@ -1,0 +1,9 @@
+<map id="ScheduleEventIn" name="ScheduleEventIn">
+<area shape="rect" id="node2" href="$class_event_action.html#a9a8515b9069293b94b72a6863c48e6ba" title="EventAction::EventAction" alt="" coords="199,5,370,33"/>
+<area shape="rect" id="node3" href="$class_dispensing_head.html#a73ec761045067e681ffc7d49f8bf3bed" title="DispensingHead::DispensingHead" alt="" coords="174,57,395,85"/>
+<area shape="rect" id="node4" href="$class_carousel.html#ad53a1a768b87aa821497c26d167c97c1" title="Carousel::Carousel" alt="" coords="443,84,576,112"/>
+<area shape="rect" id="node5" href="$class_dispensing_head.html#a77aa7eee560e1c7ca6a0eaf2e1c6be4b" title="DispensingHead::GetLocation" alt="" coords="187,161,382,189"/>
+<area shape="rect" id="node6" href="$class_carousel.html#a08d617367930c7c7fbe450eb45eda4a5" title="Carousel::ReduceSauceLevel" alt="" coords="187,213,382,241"/>
+<area shape="rect" id="node7" href="$class_conveyor.html#a4861eeab21a5943dac9b9e5801ed80ce" title="Conveyor::Conveyor" alt="" coords="214,265,355,293"/>
+<area shape="rect" id="node8" href="$class_conveyor.html#a8c9304c2861a7689a091e0f85ecea2ae" title="Conveyor::Advance" alt="" coords="216,317,352,345"/>
+</map>

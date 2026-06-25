@@ -1,0 +1,4 @@
+<map id="Ingredient::GetName" name="Ingredient::GetName">
+<area shape="rect" id="node2" href="$class_bowl.html#a6f41f50805bf4280ed7272fac41e1fa1" title="Bowl::FulfillIngredient" alt="" coords="220,5,366,33"/>
+<area shape="rect" id="node3" href="$class_conveyor.html#abfb1803aa0a53fb8331f5912ecad1f18" title="Conveyor::DispenseSauceOn" alt="" coords="196,57,390,85"/>
+</map>

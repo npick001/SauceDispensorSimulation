@@ -1,0 +1,5 @@
+<map id="GetSimulationTime" name="GetSimulationTime">
+<area shape="rect" id="node2" href="$class_event_action.html#a9a8515b9069293b94b72a6863c48e6ba" title="EventAction::EventAction" alt="" coords="186,5,357,33"/>
+<area shape="rect" id="node3" href="$class_bowl.html#a9d94b6fb4d11c81476a0a8a65b24e044" title="Bowl::~Bowl" alt="" coords="224,57,319,85"/>
+<area shape="rect" id="node4" href="$class_conveyor.html#a8c9304c2861a7689a091e0f85ecea2ae" title="Conveyor::Advance" alt="" coords="203,109,340,137"/>
+</map>

@@ -94,7 +94,7 @@ public:
 
 	// simulated control [Conveyor belt actuation, Dispensor ingredient on bowl on conveyor]
 	void Advance();
-	void DispenseSauceOn(int index, Ingredient* ingredient);
+	bool DispenseSauceOn(int index, Ingredient* ingredient);
 
 	// simulated sensors [Bowl weight per position]
 	double GetBowlWeight(int index);
