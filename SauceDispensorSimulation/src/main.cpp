@@ -47,8 +47,8 @@ int main() {
 
 	InitializeSimulation();
 
-	std::vector<Bowl*> simulated_orders = GenerateSampleOrders(30, cartridge_ingredients);
+	std::vector<Bowl*> simulated_orders = GenerateSampleOrders(50, cartridge_ingredients);
 	SauceDispensorRobot* robot = new SauceDispensorRobot(simulated_orders, cartridge_ingredients, carousel_taskrate, conveyor_taskrate, dispensor_taskrate);
 
-	RunSimulation(25000);
+	RunSimulation(15000);
 }

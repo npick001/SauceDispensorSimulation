@@ -54,6 +54,24 @@ The simulation uses the custom `LoggerLib` library for structured logging. Log o
 - `dispensing_head_log.txt`
 - `results_log.txt`
 
+## Visualization
+
+This repository includes fully AI-generated Python scripts that read the generated logs and visualize the simulation:
+
+- `animate_logs.py` — constructs an animated view of the simulation, including:
+  - the carousel with 10 ingredient cartridges
+  - the conveyor with fixed bowl slots
+  - the upstream and downstream dispensing heads
+  - inventory depletion as sauces are dispensed
+
+The animation script can also save the output as an MP4 file:
+
+```bash
+python animate_logs.py --log-dir SauceDispensorSimulation/logs --output simulation.mp4
+```
+
+The C++ backend and log files should be considered the source of truth, not the animation. 
+
 ## Assumptions
 
 The simulation is built around a specific set of hardware and model assumptions, captured in `Assumptions.txt` and summarized here:
