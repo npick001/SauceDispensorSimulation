@@ -50,5 +50,5 @@ int main() {
 	std::vector<Bowl*> simulated_orders = GenerateSampleOrders(20, cartridge_ingredients);
 	SauceDispensorRobot* robot = new SauceDispensorRobot(simulated_orders, cartridge_ingredients, carousel_taskrate, conveyor_taskrate, dispensor_taskrate);
 
-	RunSimulation(100000);
+	RunSimulation(12500);
 }
